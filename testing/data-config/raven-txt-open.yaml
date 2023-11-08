@@ -1,0 +1,4 @@
+
+dataset_name: "RAVEN"
+dataset_path: "testing/small-data/RAVEN/5rand_RAVEN_text-open_center_single.jsonl"
+task: "open_qa"

@@ -7,7 +7,7 @@ Repository for the evaluation of Large Language Models on logical and abstract r
 To install the repository, use the following command:
 
 ```
-git clone https://github.com/Strong-AI-Lab/Logical-and-abstract-reasoning.git
+git clone https://github.com/jrbyers/Logical-and-abstract-reasoning.git
 ```
 
 To install the dependencies in a virtual environment, use the following:
@@ -18,7 +18,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-You may need to install [transformers](https://huggingface.co/docs/transformers/index) from the repository:
+Install [transformers](https://huggingface.co/docs/transformers/index) from the repository:
 ```
 pip install git+https://github.com/huggingface/transformers
 ```
