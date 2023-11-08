@@ -23,10 +23,51 @@ Install [transformers](https://huggingface.co/docs/transformers/index) from the 
 pip install git+https://github.com/huggingface/transformers
 ```
 
+Create logs directory which will be gitignored
+```
+mkdir logs
+```
+
 
 ## Use
 
-### Evaluation
+### Generate Test Datasets
+generate-small-test.py creates a smaller subset of a particular database for testing purposes.
+
+Usage:
+```
+python generate-small-test.py --file_path <filepath.jsonl> --num_elements <integer> --random <boolean>
+```
+
+--file_path specifies the dataset jsonl file you wish to create a subset of
+--num_elements specifies the total number of tests cases in your test dataset
+--random True is a random sample, False is the first num_elements of test cases
+
+Example for 250 random elements from ACRE
+```
+python generate-small-test.py --file_path data/ACRE/text/IID/test.jsonl --num_elements 250 --random True
+```
+
+Smaller datasets generated from this script will be placed in the testing/small-data directory
+
+### Evaluate on Test Datasets
+Dataset configurations are stored in the directory: testing/data-config
+Model configurations are stored in the directory: config/model
+
+I have only run and tested on the gpts. I have not gone through the process of downloading other models.
+
+To on GPT2, GPT3.5, GPT4, use the following commands:
+```
+python run_evaluation.py config/model/gpt-2.yaml testing/data-config/<data_config.yaml>
+python run_evaluation.py config/model/gpt-3.5.yaml testing/data-config/<data_config.yaml> --api_key <yourapikey>
+python run_evaluation.py config/model/gpt-4.yaml testing/data-config/<data_config.yaml> --api_key <yourapikey>
+```
+For other models run:
+```
+python run_evaluation config/model/<model_config.yaml> testing/data-config/<data_config.yaml> --<kwarg_name> <kwarg>
+```
+
+### Evaluation on Entire Dataset
 
 To evaluate a model in the repository, use the following command:
 ```
