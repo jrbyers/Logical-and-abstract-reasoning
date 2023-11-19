@@ -28,6 +28,10 @@ Create logs directory which will be gitignored
 mkdir logs
 ```
 
+Update openAI
+```
+pip install openai --upgrade
+```
 
 ## Use
 

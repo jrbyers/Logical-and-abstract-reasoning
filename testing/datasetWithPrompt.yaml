@@ -1,0 +1,3 @@
+dataset_name: ACRE
+dataset_path: ./testing/temp.jsonl
+task: mc_qa

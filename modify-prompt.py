@@ -55,11 +55,32 @@ def addPrompt(data_path, prompt_path):
 
     return output_file_path
 
-def run_evaluation_on_new_data(output_file_path, model_path)
-    # create yaml for dataset
+def run_evaluation_on_new_data(data_path, output_file_path, model_path):
 
+    # get original dataset name
+    with open(data_path, 'r') as file:
+        data = yaml.safe_load(file)
+    dataset_name = data['dataset_name']
+    print('datasetname: ' + dataset_name)
+
+    # create new yaml for the new dataset
+    # no support for open qa questions
+    info_dictionary = {
+        'dataset_name': dataset_name,
+        'dataset_path': output_file_path,
+        'task': "mc_qa"
+    }
+    new_data_path = "testing/datasetWithPrompt.yaml"
+    file=open(new_data_path, "w")
+    yaml.dump(info_dictionary, file)
+    file.close()
+    print("Created new yaml file: " + new_data_path)
 
     # call run_evaluation.py
+    try:
+        os.system(f'python run_evaluation.py {model_path} {new_data_path}')
+    except FileNotFoundError:
+        print(f"Error upon spawning run_evaluation")
     
 
     # delete temporary files
@@ -83,7 +104,7 @@ def main():
     prompt_path = args.prompt_path
 
     output_file_path = addPrompt(data_path, prompt_path)
-    run_evaluation_on_new_data(output_file_path, model_path)
+    run_evaluation_on_new_data(data_path, output_file_path, model_path)
 
 main()    
 
