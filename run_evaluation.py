@@ -46,6 +46,7 @@ def parse_args():
 
 # Main
 def main():
+    print("Running evaluation")
     args, kwargs = parse_args()
     
     # Load model config file
