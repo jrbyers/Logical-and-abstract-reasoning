@@ -68,8 +68,6 @@ class GPTModel(Model):
     
     #@retry(stop_max_delay=5000, wait_fixed=1000)   # functionality to retry if api hangs
     def _prompt_chat(self, prompt):
-        print("answering _prompt_chat")
-
         responses = []
         for i in range(len(prompt[0]["content"])):  # loop goes through all test cases
             prompt_i = self._get_prompt_i(prompt, i)
@@ -78,6 +76,8 @@ class GPTModel(Model):
             signal.alarm(timoutSeconds)
             signal.signal(signal.SIGALRM, timeout_handler)
 
+            # this try blcok handles cases where GPT-3.5-turbo hangs on a call
+            # if the api call takes longer than 10 seconds, it is exited
             try:
                 response = openai.chat.completions.create(
                     model=self.model_name,

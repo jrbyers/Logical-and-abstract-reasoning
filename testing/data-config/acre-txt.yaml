@@ -1,4 +1,7 @@
 
 dataset_name: "ACRE"
-dataset_path: "testing/small-data/ACRE/1000rand_ACRE_text_IID_test.jsonl"
+dataset_path: "testing/prompts/scheme-original-250.jsonl"
 task: "mc_qa"
+
+# testing/small-data/ACRE/250rand_ACRE_text_IID_test.jsonl
+# testing/prompts/scheme1-250.jsonl

@@ -104,7 +104,7 @@ def main():
     prompt_path = args.prompt_path
 
     output_file_path = addPrompt(data_path, prompt_path)
-    run_evaluation_on_new_data(data_path, output_file_path, model_path)
+    #run_evaluation_on_new_data(data_path, output_file_path, model_path)
 
 main()    
 

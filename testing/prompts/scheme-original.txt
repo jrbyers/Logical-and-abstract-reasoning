@@ -1,0 +1,1 @@
+Figure out the pattern in the following examples and apply it to the test case. Describe every step of your reasoning before proposing a solution. When giving the solution, start your sentence with 'ANSWER:'
